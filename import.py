@@ -18,8 +18,8 @@ class Quote(peewee.Model):
 Quote.create_table()
 
 # tsvファイルを一行ずつ読み込んでタブで分割し，それぞれをデータベースに登録
-for line in open("quote.tsv", "r"):
-    (code, price, name, time) = tuple(line[:-1].split("\t"))
+for line in open("quote.csv", "r"):
+    (code, price, name, time) = tuple(line[:-1].split(","))
     if price.isdigit(): # 一行目のコメント対応．
         Quote.create(code = code,
                     price = price,
